@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: olympic-sprinter-training
+    env: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python -m streamlit run simple_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: 1
