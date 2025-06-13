@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: olympic-sprinter-training
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: 1
+      - key: DATABASE_URL
+        value: sqlite:///./training.db
